@@ -1,0 +1,28 @@
+server:
+  port: 9001
+  servlet:
+    context-path: "/workflow-service"
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:workflow
+    username: sa
+    password: #password
+    driverClassName: org.h2.Driver
+    #initialization-mode: always
+    platform: h2
+  console:
+    enabled: true
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console.path: /h2-console
+    console.settings.trace: false
+    spring.h2.console.settings.web-allow-others: false
+
+ldap:
+  domain: "domain.ktb.co.th"
+  providerUrl: "ldap://10.9.212.96:389/"
+  searchBase: "OU=KTBUsers,DC=DOMAIN,DC=KTB,DC=CO,DC=TH"
+  searchFilter: "(&(objectClass=user)(sAMAccountName={0}))"
